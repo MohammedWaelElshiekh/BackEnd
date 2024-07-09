@@ -1,16 +1,14 @@
 import { Router } from "express";
+import resizeImage from "./resize";
 import generatePlaceholder from "./placeholderGenerator";
-const router = Router();
+import multer from "multer";
 
-router.get("/", function (req, res) {
-  res.send("home page");
-});
+const upload = multer({ dest: "uploads/" });
+
+const router = Router();
 
 router.get("/generatePlaceholder", generatePlaceholder);
 
-// About page route.
-router.get("/about", function (req, res) {
-  res.send("About!");
-});
+router.post("/ResizeImage", upload.single("image"), resizeImage);
 
 export default router;
