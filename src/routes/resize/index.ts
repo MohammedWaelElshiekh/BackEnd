@@ -4,7 +4,9 @@ import sharp from "sharp";
 export default async function resizeImage(req: any, res: any) {
   try {
     const image = req.file.path;
-    const resizedImagePath = `resized-${image}`;
+    const newHeight = req.body.height,
+      newWidth = req.body.width;
+    const resizedImagePath = `${image}-${newHeight}x${newWidth}.png`;
 
     await sharp(image)
       .resize(200, 200) // set the desired dimensions
