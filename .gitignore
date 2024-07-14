@@ -3,3 +3,5 @@ dist
 public/library/
 # public/resizedImages/
 uploads/
+cachedImagesOnServer/
+resizedImages/

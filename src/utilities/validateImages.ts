@@ -22,11 +22,9 @@ export default function validateImages(
     (!image && (selectedImage == "undefined" || selectedImage == "null")) ||
     (image && selectedImage != "undefined" && selectedImage != "null")
   ) {
-    res
-      .status(400)
-      .send(
-        "Error: No Selected Or uploaded images, Please make sure to select an image from the library or upload your own using the upload button",
-      );
+    res.status(400).send({
+      err: "No Selected Or uploaded images, Please make sure to select an image from the library or upload your own using the upload button",
+    });
     throw new Error(
       "Neither the image was uploaded nor an image was selected from the gallery or both of them was provided",
     );
@@ -40,7 +38,7 @@ export default function validateImages(
     height === null ||
     typeof height != "number"
   ) {
-    res.status(400).send("Error: Invalid dimensions provided");
+    res.status(400).send({ err: "Invalid dimensions provided" });
     throw new Error("Invalid dimensions provided");
   }
   // if there is a selected image, then skip validating the uploaded image since it will be undefined and will not be used in the second step
@@ -54,11 +52,9 @@ export default function validateImages(
       ((image?.originalname.lastIndexOf(".") - 1) >>> 0) + 2,
     );
     if (!allowedImageExtensions.includes(file_extension)) {
-      res
-        .status(400)
-        .send(
-          "Error: Invalid file type. Only PNG, JPEG, and JPG are supported.",
-        );
+      res.status(400).send({
+        err: "Invalid file type. Only PNG, JPEG, and JPG are supported.",
+      });
       throw new Error(
         "Invalid file type. Only PNG, JPEG, and JPG are supported.",
       );
@@ -66,28 +62,24 @@ export default function validateImages(
 
     // validation of the file type
     if (!allowedFileTypes.includes(image?.mimetype)) {
-      res
-        .status(400)
-        .send(
-          "Error: Invalid file type. Only images (PNG, JPEG, and JPG) are supported.",
-        );
+      res.status(400).send({
+        err: " Invalid file type. Only images (PNG, JPEG, and JPG) are supported.",
+      });
       throw new Error(
         "Invalid file type. Only images (PNG, JPEG, and JPG) are supported.",
       );
     }
     // checking of the file size
     if (image?.size > allowedImageSize * 1024 * 1024) {
-      res.status(400).send("Error: File size exceeds the limit of 5MB.");
+      res.status(400).send({ err: "File size exceeds the limit of 5MB." });
       throw new Error("File size exceeds the limit of 5MB.");
     }
   }
   // checking if the height and width are within the allowed range
   if (height < 1 || height > 10000 || width < 1 || width > 10000) {
-    res
-      .status(400)
-      .send(
-        "Error: Image dimensions should be between 1x1 and 10000x10000 pixels.",
-      );
+    res.status(400).send({
+      err: "Image dimensions should be between 1x1 and 10000x10000 pixels.",
+    });
     throw new Error(
       "Image dimensions should be between 1x1 and 10000x10000 pixels.",
     );
