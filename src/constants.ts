@@ -10,3 +10,5 @@ export const allowedFileTypes = [
   "image/gif",
 ]; // for more security, the types that comes with the image
 export const allowedImageSize = 5; // in MBs
+export const domain = "http://localhost:4000";
+export const port = 4000;

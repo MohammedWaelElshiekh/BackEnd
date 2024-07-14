@@ -2,9 +2,9 @@ import express from "express";
 import router from "./routes";
 import bodyParser from "body-parser";
 import cors from "cors";
+import { port } from "./constants";
 
 const app = express();
-const port = 3001;
 
 // my logger function
 const logger = (req: any, res: any, next: Function) => {
