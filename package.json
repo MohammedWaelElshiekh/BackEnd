@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon ./src/index.ts",
     "build": "npx tsc",
+    "test": "ts-node node_modules/jasmine/bin/jasmine",
     "pretty": "npx prettier --config \".prettierrc\" -cw `find ./ -name \"*.ts\"`"
   },
   "author": "Mohammed Wael (mohammedwaelelshiekhmw@gmail.com)",
