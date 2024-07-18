@@ -19,6 +19,7 @@
     "@types/node": "^20.14.9",
     "@types/supertest": "^6.0.2",
     "jasmine": "^5.1.0",
+    "jasmine-core": "^5.1.2",
     "jasmine-spec-reporter": "^7.0.0",
     "nodemon": "^3.1.4",
     "prettier": "^3.3.2",
