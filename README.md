@@ -1,4 +1,4 @@
-# Imaging API BackEnd
+# image-processing-web-app-Backend
 
 #### FrontEnd used with this backend: [Front-End](https://github.com/MohammedWaelElshiekh/FrontEnd)
 
