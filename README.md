@@ -63,6 +63,60 @@ the url that will be ruturn will look loke this **"image1.jpg-50x30.jpg"** and t
 > the endpoint ```/library``` will return a list of all available original images on the server.
 > you can use this list to fetch the imges and show it in a gallery
 
+## Project File Structure
+
+.
+|
+├── package.json
+├── package-lock.json
+├── public
+│   ├── cachedImagesOnServer
+│   │   └── blue-1000-1000.png
+│   ├── library
+│   │   ├── image1.jpg
+│   │   ├── image2.jpg
+│   │   ├── image3.jpg
+│   │   ├── image4.jpg
+│   │   ├── image5.jpg
+│   │   ├── Screenshot from 2024-07-01 03-54-15.png
+│   │   └── test-image.jpg
+│   └── resizedImages
+│       ├── image1.jpg
+│       └── test-image.jpg-200x300.jpg
+├── README.md
+├── spec
+│   ├── support
+│   │   └── jasmine.json
+│   └── tests
+│       ├── helpers
+│       │   ├── images
+│       │   │   └── test-image.jpg
+│       │   └── reporter.ts
+│       ├── library.ts
+│       ├── resizingImage.ts
+│       ├── server.ts
+│       └── spec.ts
+├── src
+│   ├── constants.ts
+│   ├── index.ts
+│   ├── routes
+│   │   ├── index.ts
+│   │   ├── library
+│   │   │   └── index.ts
+│   │   ├── placeholderGenerator
+│   │   │   └── index.ts
+│   │   └── resize
+│   │       └── index.ts
+│   └── utilities
+│       ├── resizeSaveImage.ts
+│       ├── savingImage.ts
+│       └── validateImages.ts
+├── tree.txt
+├── tsconfig.json
+└── uploads
+    └── fe01de09f1322e191cd0d01fa3a26ac4
+
+
 
 
 
