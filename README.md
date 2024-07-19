@@ -64,7 +64,7 @@ the url that will be ruturn will look loke this **"image1.jpg-50x30.jpg"** and t
 > you can use this list to fetch the imges and show it in a gallery
 
 ## Project File Structure
-
+```
 .
 |
 ├── package.json
@@ -116,7 +116,7 @@ the url that will be ruturn will look loke this **"image1.jpg-50x30.jpg"** and t
 └── uploads
     └── fe01de09f1322e191cd0d01fa3a26ac4
 
-
+```
 
 
 ### Remarks
