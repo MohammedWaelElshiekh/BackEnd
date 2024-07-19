@@ -119,6 +119,19 @@ the url that will be ruturn will look loke this **"image1.jpg-50x30.jpg"** and t
 
 
 
-
+### Remarks
+#### Used packages in this project:
+ - CORS
+ - Express
+ - Jasmine
+ - Multer
+ - Prettier
+ - jasmine-spec-reporter
+ - nodemon
+ - supertest
+ - ts-node
+ - typescript
+ - body-parser
+ - sharp
 
 ### built with node v20.15.0 lts/iron
