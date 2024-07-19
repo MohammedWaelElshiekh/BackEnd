@@ -18,6 +18,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(cors());
 app.use("/", logger, cors(), router);
 
+app.get("/health", (req: any, res: any) => {
+  res.status(200).send("Server is up and running");
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
