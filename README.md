@@ -5,7 +5,10 @@
 This backend was developed to save developers time and fill the gaps of the images in websites prototyping.
 This api provides you with a placeholder image that is generated once and saved on the browser cache for better performance. The api requires passing the width and height and image color to generate the required placeholder image
 
-# how to use
+# How to use
+first, you need to download the backend and frontend of the project, you can fint the frontend [here](https://github.com/MohammedWaelElshiekh/FrontEnd). then you should start the orject using the backend server using ``` npm run start ``` and open the ``` index.html ``` from the frontend folder in your browser.
+
+# how it works
 There are 4 main endpoints of the application: 
 - resizeImage
 - generatePlaceholder
@@ -64,7 +67,7 @@ the url that will be ruturn will look loke this **"image1.jpg-50x30.jpg"** and t
 > you can use this list to fetch the imges and show it in a gallery
 
 ## Project File Structure
-
+```
 .
 |
 ├── package.json
@@ -116,7 +119,7 @@ the url that will be ruturn will look loke this **"image1.jpg-50x30.jpg"** and t
 └── uploads
     └── fe01de09f1322e191cd0d01fa3a26ac4
 
-
+```
 
 
 ### Remarks
