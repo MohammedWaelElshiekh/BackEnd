@@ -3,7 +3,7 @@ import { projectPath, publicDirectory, domain } from "../../constants";
 import path from "path";
 import fs from "fs";
 import SaveImage from "../../utilities/savingImage";
-import ResizeAndSaveImage from "../../utilities/resizeSaveImage";
+import ResizeAndSaveImage from "../../utilities/resizeAndSaveImage";
 export default function resizeImage(req: Request, res: Response): void {
   try {
     if (req.file != undefined) {

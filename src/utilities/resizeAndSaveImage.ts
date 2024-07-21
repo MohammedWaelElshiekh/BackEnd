@@ -1,14 +1,19 @@
 import sharp, { OutputInfo } from "sharp";
-import { Response } from "express";
 import { domain } from "../constants";
 
 export default function ResizeAndSaveImage(
   source: string,
   target: string,
-  res: Response,
   width: number,
   height: number,
-): void {
+): { code: number; err: string } {
+  // used var instead of let to make it global
+  // eslint-disable-next-line no-var
+  var output: { code: number; err: string; url: string } = {
+    code: 0,
+    err: "",
+    url: "",
+  };
   sharp(source)
     .resize(width, height) // setting the desired dimensions
     .toFile(target, (err: Error, info: OutputInfo) => {
@@ -16,23 +21,21 @@ export default function ResizeAndSaveImage(
         console.log(
           `There was an error saving the resized image to the server ${err} `,
         );
-        res
-          .status(500)
-          .send({ err: "Error saving the resized image to the server" });
+        output.code = 500;
+        output.err = "Error saving the resized image to the server";
       } else {
         console.log(`Resized image saved successfully ${info}`);
         try {
-          res.status(201).send({
-            url: `${domain}/public/resizedImages/${target.split("/")[target.split("/").length - 1]}`,
-          });
+          output.url = `${domain}/public/resizedImages/${target.split("/")[target.split("/").length - 1]}`;
+          output.code = 200;
         } catch (err) {
           if (err) {
             console.log(`error sending the saved image url to the user ${err}`);
-            res.status(500).send({
-              err: "error sending the saved image url to the user",
-            });
+            output.code = 500;
+            output.err = "error sending the saved image url to the user";
           }
         }
       }
     });
+  return output;
 }
