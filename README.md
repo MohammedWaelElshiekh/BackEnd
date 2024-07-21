@@ -6,7 +6,7 @@ This backend was developed to save developers time and fill the gaps of the imag
 This api provides you with a placeholder image that is generated once and saved on the browser cache for better performance. The api requires passing the width and height and image color to generate the required placeholder image
 
 # How to use
-first, you need to download the backend and frontend of the project, you can fint the frontenf [here](https://github.com/MohammedWaelElshiekh/FrontEnd). then you should start the orject using the backend server using ``` npm run start ``` and open the ``` index.html ``` from the frontend folder in your browser.
+first, you need to download the backend and frontend of the project, you can fint the frontend [here](https://github.com/MohammedWaelElshiekh/FrontEnd). then you should start the orject using the backend server using ``` npm run start ``` and open the ``` index.html ``` from the frontend folder in your browser.
 
 # how it works
 There are 4 main endpoints of the application: 
