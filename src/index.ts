@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import router from "./routes";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -7,7 +7,7 @@ import { port } from "./constants";
 const app = express();
 
 // my logger function
-const logger = (req: any, res: any, next: Function) => {
+const logger = (req: Request, res: Response, next: Function): void => {
   console.log(`Request: ${req.method} ${req.url}`);
   next();
 };
