@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import sharp from "sharp";
 import { projectPath, publicDirectory, domain } from "../../constants";
 import path from "path";
 import fs from "fs";
@@ -8,9 +7,7 @@ import ResizeAndSaveImage from "../../utilities/resizeSaveImage";
 export default function resizeImage(req: Request, res: Response): void {
   try {
     if (req.file != undefined) {
-      // @ts-ignore
       const imagePath: string = req.file.path; // vs code gives and error of maybeing undefined
-      // @ts-ignore
       const imageName: string = req.file.originalname;
       const newHeight: number = +req.body.height,
         newWidth: number = +req.body.width;

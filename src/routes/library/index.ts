@@ -3,8 +3,8 @@ import fs from "fs";
 import { publicDirectory } from "../../constants";
 import path from "path";
 
-export default async function Library(req: Request, res: Response) {
-  let ImagesData: (Buffer | String)[] = fs.readdirSync(
+export default function Library(req: Request, res: Response): void {
+  const ImagesData: (Buffer | string)[] = fs.readdirSync(
     path.join(publicDirectory, "library"),
     {},
   );

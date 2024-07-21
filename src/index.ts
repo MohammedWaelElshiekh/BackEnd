@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import router from "./routes";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -7,7 +7,7 @@ import { port } from "./constants";
 const app = express();
 
 // my logger function
-const logger = (req: Request, res: Response, next: Function): void => {
+const logger = (req: Request, res: Response, next: NextFunction): void => {
   console.log(`Request: ${req.method} ${req.url}`);
   next();
 };
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(cors());
 app.use("/", logger, cors(), router);
 
-app.get("/health", (req: any, res: any) => {
+app.get("/health", (req: Request, res: Response) => {
   res.status(200).send("Server is up and running");
 });
 

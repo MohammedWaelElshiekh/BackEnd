@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import {
   allowedImageExtensions,
   allowedFileTypes,
@@ -8,9 +8,9 @@ import {
 export default function validateImages(
   req: Request,
   res: Response,
-  next: Function,
+  next: NextFunction,
 ): void {
-  // @ts-ignore
+  // @ts-expect-error Type 'File | undefined' is not assignable to type 'File'. Type 'undefined' is not assignable to type 'File'
   const image: Express.Multer.File = req.file,
     height: number = +req.body.height,
     width: number = +req.body.width,
@@ -19,13 +19,13 @@ export default function validateImages(
   // console.log(image.filename, typeof image);
   if (
     (!image ||
-      // @ts-ignore
+      // @ts-expect-error This comparison appears to be unintentional because the types 'File' and 'string' have no overlap.
       image === "undefined" ||
       image === null ||
       image === undefined ||
-      // @ts-ignore
+      // @ts-expect-error This comparison appears to be unintentional because the types 'File' and 'string' have no overlap.
       image === "" ||
-      // @ts-ignore ignoring the these checks as typesript marks it as an error beacuse type file cannot equalt "undefined"
+      // @ts-expect-error This comparison appears to be unintentional because the types 'File' and 'string' have no overlap.
       image === "null" ||
       typeof image === "undefined" ||
       typeof image.filename === "undefined" ||

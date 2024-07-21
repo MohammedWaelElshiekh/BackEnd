@@ -5,19 +5,23 @@
   "scripts": {
     "start": "nodemon ./src/index.ts",
     "build": "npx tsc",
+    "lint": "npx eslint .",
     "test": "ts-node node_modules/jasmine/bin/jasmine",
-    "pretty": "npx prettier --config \".prettierrc\" -cw `find ./ -name \"*.ts\"`"
+    "pretty": "npx prettier --config \".prettierrc\" -c -w **/*.ts"
   },
   "author": "Mohammed Wael (mohammedwaelelshiekhmw@gmail.com)",
   "license": "ISC",
-  "description": "",
+  "description": "#### FrontEnd used with this backend: [Front-End](https://github.com/MohammedWaelElshiekh/FrontEnd)",
   "devDependencies": {
+    "@eslint/js": "^9.7.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jasmine": "^5.1.4",
     "@types/multer": "^1.4.11",
     "@types/node": "^20.14.9",
     "@types/supertest": "^6.0.2",
+    "eslint": "^9.7.0",
+    "globals": "^15.8.0",
     "jasmine": "^5.1.0",
     "jasmine-core": "^5.1.2",
     "jasmine-spec-reporter": "^7.0.0",
@@ -25,7 +29,8 @@
     "prettier": "^3.3.2",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.16.1"
   },
   "dependencies": {
     "body-parser": "^1.20.2",

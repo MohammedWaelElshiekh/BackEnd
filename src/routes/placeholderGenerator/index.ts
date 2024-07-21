@@ -2,10 +2,13 @@ import sharp from "sharp";
 import path from "path";
 import fs from "fs";
 import { log } from "console";
-export default async function generatePlaceholder(req: any, res: any) {
-  const color = await req.query.c,
-    height = +(await req.query.h),
-    width = +(await req.query.w);
+import { Request, Response } from "express";
+export default async function generatePlaceholder(req: Request, res: Response) {
+  const color: string = req.query.c as string,
+    // @ts-expect-error 'req.query.h' is possibly 'undefined'
+    height: number = +req.query.h as number,
+    // @ts-expect-error 'req.query.h' is possibly 'undefined'
+    width: number = +req.query.w as number;
   const imgName = `${color}-${height}-${width}.png`;
   const cachedImagesOnServer = path.join(
     __dirname,
@@ -17,7 +20,7 @@ export default async function generatePlaceholder(req: any, res: any) {
   // log(__dirname);
   fs.access(imagePath, fs.constants.R_OK, (err) => {
     if (err) {
-      const sharpInstance = sharp({
+      sharp({
         create: {
           background: color ? color : "gray",
           width: width ? width : 100,
@@ -43,7 +46,7 @@ export default async function generatePlaceholder(req: any, res: any) {
                   "x-sent": true,
                 },
               },
-              (err: any) => {
+              (err: Error): void => {
                 log(err);
               },
             );
@@ -66,7 +69,7 @@ export default async function generatePlaceholder(req: any, res: any) {
             "x-sent": true,
           },
         },
-        (err: any) => {
+        (err: Error) => {
           log(err);
         },
       );

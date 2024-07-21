@@ -1,4 +1,4 @@
-import sharp from "sharp";
+import sharp, { OutputInfo } from "sharp";
 import { Response } from "express";
 import { domain } from "../constants";
 
@@ -11,7 +11,7 @@ export default function ResizeAndSaveImage(
 ): void {
   sharp(source)
     .resize(width, height) // setting the desired dimensions
-    .toFile(target, (err: Error, info: any) => {
+    .toFile(target, (err: Error, info: OutputInfo) => {
       if (err) {
         console.log(
           `There was an error saving the resized image to the server ${err} `,
