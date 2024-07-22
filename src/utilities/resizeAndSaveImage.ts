@@ -1,41 +1,40 @@
 import sharp, { OutputInfo } from "sharp";
 import { domain } from "../constants";
 
-export default function ResizeAndSaveImage(
+export default async function ResizeAndSaveImage(
   source: string,
   target: string,
   width: number,
   height: number,
-): { code: number; err: string } {
-  // used var instead of let to make it global
-  // eslint-disable-next-line no-var
-  var output: { code: number; err: string; url: string } = {
-    code: 0,
+): Promise<{ code: number; err: string; url: string }> {
+  const output: { code: number; err: string; url: string } = {
+    code: 201,
     err: "",
     url: "",
   };
-  sharp(source)
-    .resize(width, height) // setting the desired dimensions
-    .toFile(target, (err: Error, info: OutputInfo) => {
-      if (err) {
-        console.log(
-          `There was an error saving the resized image to the server ${err} `,
-        );
-        output.code = 500;
-        output.err = "Error saving the resized image to the server";
-      } else {
-        console.log(`Resized image saved successfully ${info}`);
-        try {
+  // wrapped sharp inside a promise since it is async but hard to control it using await
+  const result = await new Promise((resolve) => {
+    sharp(source)
+      .resize(width, height) // setting the desired dimensions
+      .toFile(target, (err: Error, info: OutputInfo) => {
+        if (err) {
+          console.log(
+            `There was an error saving the resized image to the server ${err} `,
+          );
+          output.code = 500;
+          output.err = "Error saving the resized image to the server";
+        } else {
+          console.log(`Resized image saved successfully ${info}`);
+
           output.url = `${domain}/public/resizedImages/${target.split("/")[target.split("/").length - 1]}`;
-          output.code = 200;
-        } catch (err) {
-          if (err) {
-            console.log(`error sending the saved image url to the user ${err}`);
-            output.code = 500;
-            output.err = "error sending the saved image url to the user";
-          }
+          output.code = 201;
         }
-      }
-    });
-  return output;
+        resolve(true);
+      });
+  });
+  if (result) {
+    return output;
+  } else {
+    return output;
+  }
 }
